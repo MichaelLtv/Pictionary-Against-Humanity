@@ -4,7 +4,7 @@ function setup() {
     createCanvas(1280, 960);
     background(255);
 
-    socket = io.connect("http://localhost:2000");
+    socket = io.connect("https://guarded-beach-30804.herokuapp.com/");
     socket.on('mouse', newDrawing);
 }
 
@@ -17,6 +17,7 @@ function newDrawing(data) {
 
 function mouseDragged() {
     console.log('Sending: ' + mouseX + ',' + mouseY);
+    
 
     var data = {
         x: mouseX,
