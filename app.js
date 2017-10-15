@@ -17,6 +17,7 @@ function newConnection(socket) {
     console.log("New connection: " + socket.id);
 
     clients = io.sockets.clients();
+    console.log(clients);
 
     socket.on('mouse', mouseMsg);
     if (clients[0]) {
