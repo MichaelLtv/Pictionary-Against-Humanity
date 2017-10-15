@@ -53,7 +53,7 @@ function newCard() {
     text("Play Pictionary Against Humanity.", 10, 100);
     fill(0, 0, 0); 
 
-    cardPrompt;
+    cardPrompt();
 
 }
 function guess() {
