@@ -12,11 +12,12 @@ var io = socket(server);
 
 io.sockets.on("connection", newConnection);
 
+var clients = 
 function newConnection(socket) {
     console.log("New connection: " + socket.id);
 
     socket.on('mouse', mouseMsg);
-    socket.on('connect', drawPrompt);
+    socket.on('reconnect', drawPrompt);
 
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
@@ -24,6 +25,7 @@ function newConnection(socket) {
     }
 
     function drawPrompt() {
+        socket.broadcast.emit('reconnect');
         cardPrompt;
     }
 
