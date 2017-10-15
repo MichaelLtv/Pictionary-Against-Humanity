@@ -25,7 +25,9 @@ function newConnection(socket) {
         console.log("CONNECTED CLIENTS LIST: " + clients);
     });
     socket.on('mouse', mouseMsg);
-    socket.to(clients[4]).emit('drawingPlayer');
+    if (socket.id == clients[1]) {
+        socket.emit('drawingPlayer');
+    }
 
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
