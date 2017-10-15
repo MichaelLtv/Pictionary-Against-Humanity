@@ -18,10 +18,18 @@ function setup() {
 }
 
 function newDrawing(data) {
-    noStroke();
-    fill(0);
-    ellipse(data.x, data.y, 8, 8);    
-
+    if (mouseIsPressed) {
+            if (mouseButton == LEFT) {
+                noStroke();
+                fill(0);
+                ellipse(data.x, data.y, 8, 8);
+            }
+            if (mouseButton == RIGHT) {
+                noStroke();
+                fill(255);
+                rect(data.x, data.y, 24, 24);
+            }
+    }
 }
 
 function touchMoved() {
