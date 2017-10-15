@@ -1,16 +1,17 @@
 var socket;
 
 function setup() {
-    createCanvas(960, 1280);
-    background(255);
 
     textSize(48);
-    text("Pictionary Against Humanity", 10, 30);
+    text("Pictionary Against Humanity", 10, 50);
     fill(0, 0, 0);
 
     textSize(24);
-    text("Play Pictionary Against Humanity.", 10, 60);
+    text("Play Pictionary Against Humanity.", 10, 100);
     fill(0, 0, 0);
+
+    createCanvas(960, 1280);
+    background(255);
 
     socket = io.connect();
     socket.on('mouse', newDrawing);
@@ -31,15 +32,17 @@ function touchMoved() {
         x: mouseX,
         y: mouseY
     }
-    socket.emit('mouse', data);
+
     
     if (mouseIsPressed) {
         if (mouseButton == LEFT) {
+            socket.emit('mouse', data);
             noStroke();
             fill(0);
             ellipse(mouseX, mouseY, 8, 8);
         }
         if (mouseButton == RIGHT) {
+            socket.emit('mouse', data);
             noStroke();
             fill(255);
             rect(mouseX, mouseY, 24, 24);
