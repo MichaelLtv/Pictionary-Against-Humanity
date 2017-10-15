@@ -12,7 +12,7 @@ var io = socket(server);
 
 io.sockets.on("connection", newConnection);
 
-var clients = 
+
 function newConnection(socket) {
     console.log("New connection: " + socket.id);
 
