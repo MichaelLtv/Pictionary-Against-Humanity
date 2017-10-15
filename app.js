@@ -9,7 +9,7 @@ console.log("Server started.");
 var socket = require("socket.io");
 
 var io = socket(server);
-var clients = [];
+var clients = {};
 
 
 io.sockets.on("connection", newConnection);
@@ -18,7 +18,7 @@ io.sockets.on("connection", newConnection);
 function newConnection(socket) {
     console.log("New connection: " + socket.id);
 
-    clients.push(socket.id);
+    clients[socket.id] = socket;
     console.log("CONNECTED CLIENTS LIST: " + clients);
     io.sockets.on("disconnect", function() {
         delete clients[socket.id];
