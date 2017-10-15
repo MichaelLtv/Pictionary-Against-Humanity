@@ -5,7 +5,7 @@ function preload() {
   }
 
 function setup() {
-    createCanvas(960, 1440);
+    createCanvas(720, 960);
     background(255);
 
     textSize(48);
@@ -20,6 +20,7 @@ function setup() {
     socket.on('mouse', newDrawing);
     socket.on('drawingPlayer', cardPrompt);
     socket.on('guessingPlayer', guess);
+    socket.on('newCard', newCard);
 }
 
 
@@ -32,10 +33,9 @@ function newDrawing(data) {
 
 function cardPrompt() {
     button = createButton('Draw something else!');
-    button.position(800, 130);
-    button.mousePressed(cardPrompt);
+    button.position(10, 960);
+    button.mousePressed(newCard);
 
-    clear();
     textSize(24);
     text("Draw... " + cards[Math.floor(Math.random() * cards.length)], 10, 160);
     fill(0, 0, 0);
@@ -43,6 +43,20 @@ function cardPrompt() {
 
 }
 
+function newCard() {
+    socket.emit('newCard')
+    clear();
+    textSize(48);
+    text("Pictionary Against Humanity", 10, 50);
+    fill(0, 0, 0);
+
+    textSize(24);
+    text("Play Pictionary Against Humanity.", 10, 100);
+    fill(0, 0, 0); 
+
+    cardPrompt;
+
+}
 function guess() {
     textSize(24);
     text("Guess what they're drawing!", 10, 160);
