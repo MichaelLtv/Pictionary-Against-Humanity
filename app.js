@@ -13,6 +13,9 @@ var clients = [];
 
 
 io.sockets.on("connection", newConnection);
+io.sockets.on("disconnect", function() {
+    delete socket.namespace.sockets[socket.id];
+});
 
 
 
