@@ -4,6 +4,10 @@ function setup() {
     createCanvas(960, 1280);
     background(255);
 
+    loadImage("client/img/di7oW7V.png", function(img) {
+        Image(img, 0, 0);
+    });
+
     socket = io.connect();
     socket.on('mouse', newDrawing);
 }
