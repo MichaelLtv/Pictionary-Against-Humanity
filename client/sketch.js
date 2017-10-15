@@ -1,6 +1,8 @@
 var socket;
 
 function setup() {
+    createCanvas(960, 1280);
+    background(255);
 
     textSize(48);
     text("Pictionary Against Humanity", 10, 50);
@@ -9,9 +11,7 @@ function setup() {
     textSize(24);
     text("Play Pictionary Against Humanity.", 10, 100);
     fill(0, 0, 0);
-
-    createCanvas(960, 1280);
-    background(255);
+    
     socket = io.connect();
     socket.on('mouse', newDrawing);
 }
