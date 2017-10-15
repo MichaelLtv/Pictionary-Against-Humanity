@@ -31,9 +31,15 @@ function newDrawing(data) {
 }
 
 function cardPrompt() {
+    button = createButton('Draw something else!');
+    button.position(60, 160);
+    button.mousePressed(cardPrompt);
+    
     textSize(24);
     text("Draw... " + cards[Math.floor(Math.random() * cards.length)], 10, 160);
     fill(0, 0, 0);
+
+
 }
 
 function guess() {
@@ -41,6 +47,7 @@ function guess() {
     text("Guess what they're drawing!", 10, 160);
     fill(0, 0, 0);
 }
+
 function touchMoved() {
     console.log('Sending: ' + mouseX + ',' + mouseY);
     
