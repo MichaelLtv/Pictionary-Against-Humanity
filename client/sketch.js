@@ -11,7 +11,7 @@ function setup() {
 function newDrawing(data) {
     noStroke();
     fill(0);
-    ellipse(data.x, data.y, 4, 4);    
+    ellipse(data.x, data.y, 8, 8);    
 
 }
 
@@ -27,6 +27,6 @@ function touchMoved() {
 
     noStroke();
     fill(0);
-    ellipse(mouseX, mouseY, 4, 4);
+    ellipse(mouseX, mouseY, 8, 8);
     return false;
 }
