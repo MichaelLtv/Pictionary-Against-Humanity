@@ -33,7 +33,7 @@ function newConnection(socket) {
     }
 
     function drawPrompt() {
-        socket.to(clients[0]).emit('drawingPlayer', cardPrompt);
+        socket.emit('drawingPlayer', cardPrompt);
         
     }
 
