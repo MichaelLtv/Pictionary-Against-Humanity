@@ -17,7 +17,7 @@ function setup() {
     fill(0, 0, 0); 
 
     textSize(24);
-    text("Draw... " + cards[0], 10, 160);
+    text("Draw... " + cards[Math.floor(Math.random() * cards.length)], 10, 160);
     fill(0, 0, 0);
 
     
