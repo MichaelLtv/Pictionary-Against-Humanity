@@ -11,18 +11,17 @@ var socket = require("socket.io");
 var io = socket(server);
 
 io.sockets.on("connection", newConnection);
-var clients;
+var clients = [];
 
 function newConnection(socket) {
     console.log("New connection: " + socket.id);
 
-    clients = io.sockets.clients();
+    clients.push(socket.id);
     console.log(clients);
 
     socket.on('mouse', mouseMsg);
-    if (clients[0]) {
-        socket.on('reconnect', drawPrompt);
-    }
+    io.sockets.connected[clients[0]].emit(drawPrompt);
+    io.sockets.connected[clients[1]].emit(guessPrompt);
 
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
@@ -32,6 +31,11 @@ function newConnection(socket) {
     function drawPrompt() {
         socket.broadcast.emit('reconnect');
         cardPrompt;
+    }
+
+    function guessPrompt() {
+        socket.broadcast.emit('connect');
+        guess;
     }
 
 }

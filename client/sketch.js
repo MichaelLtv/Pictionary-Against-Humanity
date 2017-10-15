@@ -17,10 +17,10 @@ function setup() {
     fill(0, 0, 0); 
 
     socket = io.connect();
-    socket.on('connect', cardPrompt);
     socket.on('mouse', newDrawing);
     
 }
+
 
 function newDrawing(data) {
     noStroke();
@@ -35,6 +35,11 @@ function cardPrompt() {
     fill(0, 0, 0);
 }
 
+function guess() {
+    textSize(24);
+    text("Guess what they're drawing!", 10, 160);
+    fill(0, 0, 0);
+}
 function touchMoved() {
     console.log('Sending: ' + mouseX + ',' + mouseY);
     
