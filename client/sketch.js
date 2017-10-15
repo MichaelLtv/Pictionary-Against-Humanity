@@ -1,7 +1,7 @@
 var socket;
 
 function setup() {
-    createCanvas(1280, 960);
+    createCanvas(960, 1280);
     background(255);
 
     socket = io.connect();
@@ -15,7 +15,7 @@ function newDrawing(data) {
 
 }
 
-function mouseDragged() {
+function touchMoved() {
     console.log('Sending: ' + mouseX + ',' + mouseY);
     
 
@@ -28,4 +28,5 @@ function mouseDragged() {
     noStroke();
     fill(0);
     ellipse(mouseX, mouseY, 4, 4);
+
 }
