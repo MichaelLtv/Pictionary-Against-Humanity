@@ -20,13 +20,14 @@ function newConnection(socket) {
     console.log("New connection: " + socket.id);
 
     clients.push(socket.id);
-    console.log(clients);
+    console.log("CONNECTED CLIENTS LIST: " + clients);
     socket.on('mouse', mouseMsg);
     socket.emit('drawingPlayer');
     io.sockets.on("disconnect", function() {
         delete clients[socket.id];
+        console.log("CONNECTED CLIENTS LIST: " + clients);
     });
-    
+
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
         console.log(data);
