@@ -16,14 +16,9 @@ function setup() {
     text("Play Pictionary Against Humanity.", 10, 100);
     fill(0, 0, 0); 
 
-    textSize(24);
-    text("Draw... " + cards[Math.floor(Math.random() * cards.length)], 10, 160);
-    fill(0, 0, 0);
-
-    
-
     socket = io.connect();
     socket.on('mouse', newDrawing);
+    socket.emit(cardPrompt);
 }
 
 function newDrawing(data) {
@@ -31,6 +26,12 @@ function newDrawing(data) {
     fill(0);
     ellipse(data.x, data.y, 8, 8);    
 
+}
+
+function cardPrompt() {
+    textSize(24);
+    text("Draw... " + cards[Math.floor(Math.random() * cards.length)], 10, 160);
+    fill(0, 0, 0);
 }
 
 function touchMoved() {

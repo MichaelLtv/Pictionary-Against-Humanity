@@ -21,5 +21,10 @@ function newConnection(socket) {
         socket.broadcast.emit('mouse', data);
         console.log(data);
     }
+
+    function drawPrompt() {
+        socket.broadcast.emit(cardPrompt);
+    }
+
 }
 
