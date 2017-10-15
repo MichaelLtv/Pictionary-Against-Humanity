@@ -27,7 +27,6 @@ function newConnection(socket) {
     }
 
     function drawPrompt() {
-        socket.broadcast.emit('reconnect');
         cardPrompt;
     }
 
