@@ -32,9 +32,10 @@ function newDrawing(data) {
 
 function cardPrompt() {
     button = createButton('Draw something else!');
-    button.position(60, 160);
+    button.position(800, 130);
     button.mousePressed(cardPrompt);
-    
+
+    clear();
     textSize(24);
     text("Draw... " + cards[Math.floor(Math.random() * cards.length)], 10, 160);
     fill(0, 0, 0);
