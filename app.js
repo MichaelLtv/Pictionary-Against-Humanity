@@ -11,13 +11,17 @@ var socket = require("socket.io");
 var io = socket(server);
 
 io.sockets.on("connection", newConnection);
-
+var clients;
 
 function newConnection(socket) {
     console.log("New connection: " + socket.id);
 
+    clients = io.sockets.clients();
+
     socket.on('mouse', mouseMsg);
-    socket.on('reconnect', drawPrompt);
+    if (clients[0]) {
+        socket.on('reconnect', drawPrompt);
+    }
 
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
