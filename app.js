@@ -13,7 +13,10 @@ var clients = [];
 
 
 io.sockets.on("connection", newConnection);
-
+io.sockets.on("disconnect", function() {
+    delete clients[socket.id];
+    console.log("CONNECTED CLIENTS LIST: " + clients);
+});
 
 
 function newConnection(socket) {
@@ -23,10 +26,10 @@ function newConnection(socket) {
     console.log("CONNECTED CLIENTS LIST: " + clients);
     socket.on('mouse', mouseMsg);
     socket.emit('drawingPlayer');
-    io.sockets.on("disconnect", function() {
+/*     io.sockets.on("disconnect", function() {
         delete clients[socket.id];
         console.log("CONNECTED CLIENTS LIST: " + clients);
-    });
+    }); */
 
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
