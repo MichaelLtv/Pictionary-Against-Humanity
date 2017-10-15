@@ -13,9 +13,6 @@ var clients = [];
 
 
 io.sockets.on("connection", newConnection);
-io.sockets.on("disconnect", function() {
-    delete socket.namespace.sockets[socket.id];
-});
 
 
 
@@ -26,7 +23,10 @@ function newConnection(socket) {
     console.log(clients);
     socket.on('mouse', mouseMsg);
     socket.emit('drawingPlayer');
-
+    io.sockets.on("disconnect", function() {
+        delete clients[socket.id];
+    });
+    
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
         console.log(data);
