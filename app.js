@@ -25,7 +25,7 @@ function newConnection(socket) {
     clients.push(socket.id);
     console.log("CONNECTED CLIENTS LIST: " + clients);
     socket.on('mouse', mouseMsg);
-    socket.emit('drawingPlayer');
+    socket.to(clients[4]).emit('drawingPlayer');
 /*     io.sockets.on("disconnect", function() {
         delete clients[socket.id];
         console.log("CONNECTED CLIENTS LIST: " + clients);
@@ -36,10 +36,6 @@ function newConnection(socket) {
         console.log(data);
     }
 
-    function drawPrompt() {
-        socket.emit('drawingPlayer', cardPrompt);
-        
-    }
 
 
 }
