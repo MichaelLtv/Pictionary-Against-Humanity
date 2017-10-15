@@ -19,7 +19,7 @@ function setup() {
     socket = io.connect();
     socket.on('mouse', newDrawing);
     socket.on('drawingPlayer', cardPrompt);
-    
+    socket.on('guessingPlayer', guess);
 }
 
 
@@ -34,7 +34,6 @@ function cardPrompt() {
     textSize(24);
     text("Draw... " + cards[Math.floor(Math.random() * cards.length)], 10, 160);
     fill(0, 0, 0);
-    socket.emit('drawingPlayer');
 }
 
 function guess() {

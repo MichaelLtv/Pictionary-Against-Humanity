@@ -28,6 +28,9 @@ function newConnection(socket) {
     if (socket.id == clients[1]) {
         socket.emit('drawingPlayer');
     }
+    else {
+        socket.emit('guessingPlayer');
+    }
 
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
