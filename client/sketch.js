@@ -20,7 +20,7 @@ function setup() {
     socket.on('mouse', newDrawing);
     socket.on('drawingPlayer', cardPrompt);
     socket.on('guessingPlayer', guess);
-    socket.on('newCard', newCard);
+
 }
 
 
@@ -33,7 +33,7 @@ function newDrawing(data) {
 
 function cardPrompt() {
     button = createButton('Draw something else!');
-    button.position(10, 960);
+    button.position(10, 700);
     button.mousePressed(newCard);
 
     textSize(24);
@@ -44,7 +44,6 @@ function cardPrompt() {
 }
 
 function newCard() {
-    socket.emit('newCard')
     clear();
     textSize(48);
     text("Pictionary Against Humanity", 10, 50);
