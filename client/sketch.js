@@ -18,7 +18,7 @@ function setup() {
 
     socket = io.connect();
     socket.on('mouse', newDrawing);
-    socket.emit(cardPrompt);
+    cardPrompt;
 }
 
 function newDrawing(data) {

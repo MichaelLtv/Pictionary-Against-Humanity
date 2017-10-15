@@ -24,7 +24,7 @@ function newConnection(socket) {
     }
 
     function drawPrompt() {
-        socket.broadcast.emit(cardPrompt);
+        cardPrompt;
     }
 
 }
