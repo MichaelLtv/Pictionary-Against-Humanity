@@ -1,9 +1,12 @@
 var socket;
 
+function preload() {
+    cards = loadStrings('wcards.txt');
+  }
+
 function setup() {
-    createCanvas(960, 1280);
+    createCanvas(960, 1440);
     background(255);
-    stroke(0);
 
     textSize(48);
     text("Pictionary Against Humanity", 10, 50);
@@ -11,7 +14,13 @@ function setup() {
 
     textSize(24);
     text("Play Pictionary Against Humanity.", 10, 100);
+    fill(0, 0, 0); 
+
+    textSize(24);
+    text(cards[0], 100, 160);
     fill(0, 0, 0);
+
+    
 
     socket = io.connect();
     socket.on('mouse', newDrawing);
