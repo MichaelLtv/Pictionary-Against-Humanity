@@ -17,7 +17,7 @@ function newConnection(socket) {
 
     clients.push(socket.id);
     console.log(clients);
-    socket.broadcast.to(clients[0]).emit(drawPrompt);
+    socket.to(clients[0]).emit(drawPrompt);
     socket.on('mouse', mouseMsg);
     
 
