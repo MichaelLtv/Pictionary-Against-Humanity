@@ -10,7 +10,11 @@ var socket = require("socket.io");
 
 var io = socket(server);
 var clients = [];
+
+
 io.sockets.on("connection", newConnection);
+
+
 
 function newConnection(socket) {
     console.log("New connection: " + socket.id);
@@ -18,7 +22,7 @@ function newConnection(socket) {
     clients.push(socket.id);
     console.log(clients);
     socket.on('mouse', mouseMsg);
-    drawPrompt;
+    socket.on('drawingPlayer', drawPrompt);
 
     function mouseMsg(data) {
         socket.broadcast.emit('mouse', data);
@@ -26,7 +30,7 @@ function newConnection(socket) {
     }
 
     function drawPrompt() {
-        socket.to(clients[0]).emit(cardPrompt);
+        socket.to(clients[0]).emit('drawingPlayer', cardPrompt);
         
     }
 
