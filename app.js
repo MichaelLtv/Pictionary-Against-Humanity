@@ -20,7 +20,7 @@ function newConnection(socket) {
 
     clients.push(socket.id);
     console.log("CONNECTED CLIENTS LIST: " + clients);
-    io.sockets.on("disconnect", function() {
+    sockets.on("disconnect", function() {
         clients.splice(clients.indexOf(socket.id), 1 );
         console.log("CONNECTED CLIENTS LIST: " + clients);
     });
