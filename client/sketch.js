@@ -24,9 +24,19 @@ function touchMoved() {
         y: mouseY
     }
     socket.emit('mouse', data);
-
-    noStroke();
-    fill(0);
-    ellipse(mouseX, mouseY, 8, 8);
-    return false;
+    
+    if (mouseIsPressed) {
+        if (mouseButton == LEFT) {
+            noStroke();
+            fill(0);
+            ellipse(mouseX, mouseY, 8, 8);
+        }
+        if (mouseButton == RIGHT) {
+            noStroke();
+            fill(255);
+            rect(mouseX, mouseY, 24, 24);
+        }
+        return false;
+    }
+    
 }
