@@ -10,26 +10,15 @@ function setup() {
     text("Play Pictionary Against Humanity.", 10, 100);
     fill(0, 0, 0);
 
-    createCanvas(960, 1280);
-    background(255);
-
     socket = io.connect();
     socket.on('mouse', newDrawing);
 }
 
 function newDrawing(data) {
-    if (mouseIsPressed) {
-            if (mouseButton == LEFT) {
-                noStroke();
-                fill(0);
-                ellipse(data.x, data.y, 8, 8);
-            }
-            if (mouseButton == RIGHT) {
-                noStroke();
-                fill(255);
-                rect(data.x, data.y, 24, 24);
-            }
-    }
+    noStroke();
+    fill(0);
+    ellipse(data.x, data.y, 8, 8);    
+
 }
 
 function touchMoved() {
@@ -40,21 +29,10 @@ function touchMoved() {
         x: mouseX,
         y: mouseY
     }
-
-    
-    if (mouseIsPressed) {
-        if (mouseButton == LEFT) {
-            noStroke();
-            fill(0);
-            ellipse(mouseX, mouseY, 8, 8);
-        }
-        if (mouseButton == RIGHT) {
-            noStroke();
-            fill(255);
-            rect(mouseX, mouseY, 24, 24);
-        }
-        socket.emit('mouse', data);
-        return false;
-    }
-    
+    socket.emit('mouse', data);
+    noStroke();
+    fill(0);
+    ellipse(mouseX, mouseY, 8, 8);
+    return false;
+   
 }
