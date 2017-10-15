@@ -28,5 +28,5 @@ function touchMoved() {
     noStroke();
     fill(0);
     ellipse(mouseX, mouseY, 4, 4);
-
+    return false;
 }
