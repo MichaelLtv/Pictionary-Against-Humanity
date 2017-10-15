@@ -17,7 +17,7 @@ function setup() {
     fill(0, 0, 0); 
 
     textSize(24);
-    text(cards[0], 100, 160);
+    text("Draw... " + cards[0], 10, 160);
     fill(0, 0, 0);
 
     
